@@ -6,25 +6,32 @@ import { TransactionHistory } from "components/TransactionHistory/TransactionHis
 import user from "data/user.json";
 import data from "data/data.json";
 import friends from "data/friends.json";
-import transactions from "data/transactions.json"
+import transactions from "data/transactions.json";
 
+import { AppContainer, TaskTitle, icon } from "./App.styled"
+
+import { DiReact } from 'react-icons/di';
 
 export const App = () => {
   return (
-    <div>
+    <AppContainer>
+      <TaskTitle><DiReact style={icon} />Task #1</TaskTitle>
       <Profile username={user.username}
         tag={user.tag}
         location={user.location}
         avatar={user.avatar}
         stats={user.stats}
       />
+      <TaskTitle><DiReact style={icon} />Task #2</TaskTitle>
       <Statistics title="Upload stats"
         stats={data}
       />
+      <TaskTitle><DiReact style={icon} />Task #3</TaskTitle>
       <FriendList friends={friends}
       />
+      <TaskTitle><DiReact style={icon} />Task #4</TaskTitle>
       <TransactionHistory items={transactions}
       />
-    </div>
+    </AppContainer>
   );
 };

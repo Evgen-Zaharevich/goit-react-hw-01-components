@@ -1,36 +1,40 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { ProfileCard, Description, Avatar, Name, Tag, Location, Stats, StatsItem, Label, Quantity, icon } from './Profile.styled';
+import { HiLocationMarker } from 'react-icons/hi';
+
 export { Profile };
+
 
 function Profile({ username, tag, location, avatar, stats }) {
   return (
-    <div className="profile">
-      <div className="description">
-        <img
+    <ProfileCard>
+      <Description>
+        <Avatar
           src={avatar}
           alt="User avatar"
           className="avatar"
-          width={240}
+          width={150}
         />
-        <p className="name">{username}</p>
-        <p className="tag">{tag}</p>
-        <p className="location">{location}</p>
-      </div>
+        <Name>{username}</Name>
+        <Tag>@{tag}</Tag>
+        <Location><HiLocationMarker style={icon} />{location}</Location>
+      </Description>
 
-      <ul className="stats">
-        <li>
-          <span className="label">Followers </span>
-          <span className="quantity">{stats.followers}</span>
-        </li>
-        <li>
-          <span className="label">Views </span>
-          <span className="quantity">{stats.views}</span>
-        </li>
-        <li>
-          <span className="label">Likes </span>
-          <span className="quantity">{stats.likes}</span>
-        </li>
-      </ul>
-    </div>
+      <Stats>
+        <StatsItem>
+          <Label>Followers</Label>
+          <Quantity>{stats.followers}</Quantity>
+        </StatsItem>
+        <StatsItem>
+          <Label>Views</Label>
+          <Quantity>{stats.views}</Quantity>
+        </StatsItem>
+        <StatsItem>
+          <Label>Likes</Label>
+          <Quantity>{stats.likes}</Quantity>
+        </StatsItem>
+      </Stats>
+    </ProfileCard>
   );
 }
 

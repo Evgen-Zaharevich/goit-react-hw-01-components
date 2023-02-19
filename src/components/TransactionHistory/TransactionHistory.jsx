@@ -1,33 +1,35 @@
 import PropTypes from "prop-types";
+import { TransactionHead, TransactionTable, TransactionTableBody, TransactionTableRow, TransactionHeadLine, TransactionTableData } from './TransactionHistory.styled';
+
 export { TransactionHistory };
     
 function TransactionHistoryHead() {
     return (
-        <tr>
-            <th>Type</th>
-            <th>Amount</th>
-            <th>Currency</th>
-        </tr>
+        <TransactionHead>
+            <tr>
+                <TransactionHeadLine>Type</TransactionHeadLine>
+                <TransactionHeadLine>Amount</TransactionHeadLine>
+                <TransactionHeadLine>Currency</TransactionHeadLine>
+            </tr>
+        </TransactionHead>
     )
 }
 
-function TransactionHistoryLine({id, type, amount, currency}) {
+function TransactionHistoryLine({type, amount, currency}) {
     return (
-        <tr>
-            <td>{type}</td>
-            <td>{amount}</td>
-            <td>{currency}</td>
-        </tr>
+        <TransactionTableRow>
+            <TransactionTableData>{type}</TransactionTableData>
+            <TransactionTableData>{amount}</TransactionTableData>
+            <TransactionTableData>{currency}</TransactionTableData>
+        </TransactionTableRow>
     );
 }
 
 function TransactionHistory({items}) {
     return (
-        <table className="transaction-history">
-            <thead>
+        <TransactionTable>
                 <TransactionHistoryHead />
-            </thead>
-            <tbody>
+            <TransactionTableBody>
                 {items.map(({id, type, amount, currency}) => (
                     <TransactionHistoryLine
                         key={id}
@@ -36,8 +38,8 @@ function TransactionHistory({items}) {
                         currency={currency}
                     />
                 ))}
-            </tbody>
-        </table>
+            </TransactionTableBody>
+        </TransactionTable>
     )
 }
 

@@ -1,19 +1,20 @@
 import PropTypes from "prop-types";
+import { FriendListContainer, FriendItem, FriendStatus, FriendIMG, FriendName } from './FriendList.styled';
 export { FriendList };
 
 function FriendListItem({avatar, name, isOnline}) {
     return (
-        <li className="item">
-            <span className="status">{isOnline}</span>
-            <img className="avatar" src={avatar} alt="User avatar" width="48" />
-            <p className="name">{name}</p>
-        </li>
+        <FriendItem>
+            <FriendStatus status={isOnline}>{isOnline}</FriendStatus>
+            <FriendIMG src={avatar} alt="User avatar" width="48" height="48" />
+            <FriendName>{name}</FriendName>
+        </FriendItem>
     );
 }
 
 function FriendList({friends}) {
     return (
-        <ul className="friend-list">
+        <FriendListContainer>
             {friends.map(({ avatar, name, isOnline, id }) => (
                 <FriendListItem
                     key={id}
@@ -22,7 +23,7 @@ function FriendList({friends}) {
                     isOnline={isOnline}
                 />
             ))}
-        </ul>
+        </FriendListContainer>
     )
 }
 
