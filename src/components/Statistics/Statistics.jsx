@@ -7,7 +7,7 @@ export { Statistics };
 function Statistics({title, stats}) {
     return (
         <Section>
-            <SectionTitle>{title}</SectionTitle>
+            {title && <SectionTitle>{title}</SectionTitle>}
 
   <StatisticList>
     {stats.map(({id, label, percentage}) => (
